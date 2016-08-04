@@ -22,7 +22,7 @@
  */
 class Deferred<Tvalue, Treason> {
   _settled: boolean;
-  _promise: Promise;
+  _promise: Promise<any>;
   _resolve: (value: Tvalue) => void;
   _reject: (reason: Treason) => void;
 
@@ -34,7 +34,7 @@ class Deferred<Tvalue, Treason> {
     });
   }
 
-  getPromise(): Promise {
+  getPromise(): Promise<any> {
     return this._promise;
   }
 
@@ -48,7 +48,7 @@ class Deferred<Tvalue, Treason> {
     this._reject(reason);
   }
 
-  then(): Promise {
+  then(): Promise<any> {
     return Promise.prototype.then.apply(this._promise, arguments);
   }
 
